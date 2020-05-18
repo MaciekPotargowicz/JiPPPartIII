@@ -4,7 +4,7 @@ public class Main {
 
     public static void main(String[] args) {
 
-        List<Double> list = List.of(1.0, 2.0, 3.0);
+        List<Double> list = List.of(1.0,2.0,1.0);
 
         try {
             System.out.println(average(list));
@@ -15,10 +15,15 @@ public class Main {
     }
 
     public static double median(List<Double> list) {
-        if (checkIsEven(list)) {
-            return count(list);
+        if (!list.isEmpty()) {
+            if (checkIsEven(list)) {
+                return count(list);
+            } else {
+                return countCollect(list);
+            }
         }
-        return countCollect(list);
+        throw new ArithmeticException("List can not be null");
+
     }
 
     private static double countCollect(List<Double> list) {
