@@ -8,14 +8,29 @@ public class Main {
 
         try {
             System.out.println(average(list));
+            System.out.println(median(list));
         } catch (ArithmeticException ex) {
             System.out.println(ex.getMessage());
         }
     }
 
-    public static double median(List<Double> list){
-        
-        return 2.0;
+    public static double median(List<Double> list) {
+        if (checkIsEven(list)) {
+            return count(list);
+        }
+        return countCollect(list);
+    }
+
+    private static double countCollect(List<Double> list) {
+        return list.get((list.size() + 1) / 2 - 1);
+    }
+
+    private static double count(List<Double> list) {
+        return (list.get(list.size() / 2) + list.get((list.size() / 2) - 1)) / 2;
+    }
+
+    private static boolean checkIsEven(List<Double> list) {
+        return list.size() % 2 == 0 ? true : false;
     }
 
     public static double average(List<Double> list) throws ArithmeticException {
